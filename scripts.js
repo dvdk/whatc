@@ -15,7 +15,7 @@ rowCallback = function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
 			risk = "Unusual";
 			break;
 		case 4:
-			risk = "Highly Unusual";
+			risk = "HIGHLY UNUSUAL";
 			break;
 	}
 	$('td:eq(0)', nRow).html(risk);

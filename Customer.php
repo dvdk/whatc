@@ -76,7 +76,6 @@ class Customer implements JsonSerializable {
             
             $betStake = $bet->getStake();
             $averageStake = $this->getAverageStake();
-            echo "Customer ID: ".$this->customerId ."Average:".$this->getAverageStake();
             
             if ($betStake > ($averageStake * HIGHLY_UNUSUAL_STAKE_MULTIPLIER)) {
             	$bet->setRisk(Bet::HIGHLY_UNUSUAL);

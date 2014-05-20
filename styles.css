@@ -1,16 +1,17 @@
 .winningtoooften {
 	color:coral;
 }
-. unusual {
-	color:red;	
+.unusual {
+	color:blue;	
 }
+
 .highlyunusual {
 	color:red;
 	font-weight:bold;
 }
 
 .highpayoutchance {
-	color:darkred;
+	color:yellowgreen;
 }
 thead {
 	text-align:left;
