@@ -1,8 +1,8 @@
 <?php
-include "Bet.php";
-include "Config.php";
+include_once "Bet.php";
+include_once "Config.php";
 
-class Customer {
+class Customer implements JsonSerializable {
     private $settledBets;
     private $unsettledBets;
     private $wonBets;
@@ -13,8 +13,8 @@ class Customer {
     /*
      * Construct a new customer object with a given id
      */
-    public function __consturct($customerId)
-    {
+    public function __construct($customerId)
+    {    	
         $this->customerId = $customerId;
 
         $this->settledBets = array();
@@ -26,7 +26,7 @@ class Customer {
 
     public function addBet($bet)
     {
-        if ($bet->getType() == "settled") {
+        if ($bet->getStatus() == Bet::SETTLED) {
             $this->settledBets[] = $bet;
             if ($bet->didWin()) {
                 $this->betsWon++;
@@ -37,6 +37,11 @@ class Customer {
         
         $this->totalBets++;
         $this->totalStake+= $bet->getStake();
+    }
+    
+    public function getCustomerId()
+    {
+    	return $this->customerId;
     }
 
     public function getSettledBetsWithRisk()
@@ -84,6 +89,17 @@ class Customer {
     
     private function getAverageStake()
     {
-    	return $this->totalStake / $this->totalBets();	
+    	return $this->totalStake / $this->totalBets;	
+    }
+    
+	/*
+     * Return json representation
+     */
+    public function jsonSerialize()
+    {
+    	return ['CustomerId' => $this->customerId,
+				'SettledBets' => $this->settledBets,
+    			'UnsettledBets' => $this->unsettledBets
+    	]; 
     }
 }

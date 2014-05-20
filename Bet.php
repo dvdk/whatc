@@ -37,15 +37,15 @@ class Bet implements JsonSerializable {
 	 */    
     public function __construct($status, $customer, $event, $participant, $stake, $win)
     {
-    	assert($status == SETTLED || $status == UNSETTLED);
-    	$this->status = status;
+    	assert($status == Bet::SETTLED || $status == Bet::UNSETTLED);
+    	$this->status = $status;
     	
     	$this->customer = $customer;
     	$this->event = $event;
     	$this->participant = $participant;
     	$this->stake = $stake;
     	$this->win = $win;
-    	$this->risk = NONE;
+    	$this->risk = Bet::NONE;
     }
 
 	/*
@@ -53,20 +53,36 @@ class Bet implements JsonSerializable {
 	 */
     public function didWin()
     {
-        return (($this->status == Settled) && ($this->win != 0));
+        return (($this->status == Bet::SETTLED) && ($this->win != 0));
     }
     
     /*
-     *  Getter
+     *  Getters
      */
+    public function getStatus()
+    {
+    	return $this->status;
+    }
+     
     public function getStake()
     {
     	return $this->stake;
     }
     
+    public function getWin()
+    {
+    	return $this->win;
+    }
+    
+    
     public function setRisk($risk)
     {
-    	asset($risk == NONE || $risk == RISKY || $risk == UNUSUAL || $risk == HIGHLY_UNUSUAL || $risk == UNUSUAL_WIN);
+    	assert($risk == Bet::NONE || 
+    		  $risk == Bet::RISKY || 
+    		  $risk == Bet::UNUSUAL || 
+    		  $risk == Bet::HIGHLY_UNUSUAL || 
+    		  $risk == Bet::UNUSUAL_WIN);
+    		  
     	$this->risk = $risk;    	
     }
     
