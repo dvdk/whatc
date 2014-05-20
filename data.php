@@ -11,7 +11,7 @@ function getBetData($status)
 
 	foreach ($customers as $customer) {
 		$unsettledBets = array_merge($unsettledBets, $customer->getUnsettledBetsWithRisk());
-		$settledBets =  array_merge($settledBets, $customer->getSettledBetsWithRisk());
+		$settledBets =  array_merge($settledBets, $customer->getRiskySettledBets());
 	}
 	
 	if ($status == Bet::UNSETTLED) {

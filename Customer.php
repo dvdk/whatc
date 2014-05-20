@@ -54,7 +54,16 @@ class Customer implements JsonSerializable {
         }
         
         return $this->settledBets;
-
+    }
+    
+    // Only return this customers settled bets if they were winning over the treshhold
+    public function getRiskySettledBets()
+    {
+    	$winRisk = $this->getPercentWon() > WIN_RISK_THRESHOLD;
+    	if ($winRisk) {
+    		return $this->getSettledBetsWithRisk();
+    	}
+    	return array();
     }
 
     public function getUnsettledBetsWithRisk()
@@ -67,10 +76,11 @@ class Customer implements JsonSerializable {
             
             $betStake = $bet->getStake();
             $averageStake = $this->getAverageStake();
+            echo "Customer ID: ".$this->customerId ."Average:".$this->getAverageStake();
             
-            if ($betStake > ($betStake * HIGHLY_UNUSUAL_STAKE_MULTIPLIER)) {
+            if ($betStake > ($averageStake * HIGHLY_UNUSUAL_STAKE_MULTIPLIER)) {
             	$bet->setRisk(Bet::HIGHLY_UNUSUAL);
-            } else if ($betStake > ($betStake * UNUSUAL_STAKE_MULTIPLIER)) {
+            } else if ($betStake > ($averageStake * UNUSUAL_STAKE_MULTIPLIER)) {
             	$bet->setRisk(Bet::UNUSUAL);
             }
             
