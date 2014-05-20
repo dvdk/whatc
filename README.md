@@ -39,11 +39,11 @@ checked each type of risk is shown correctly by manually playing with the csv fi
 
 Another thing not considered is that bets can have multiple different risk profiles.
 Eg a bet could trigger a warning for having a potential win amount > $1000, AND
-if the customer has a high win rate AND a third time if the bet in question was
- > 10x the the customers average bet amount. Ideally the status property of the Bet
-object should be a bit mask, and Customer::getUnsettledBetsWithRisk() should set
-these values independently, with the datatable having logic to show multiple different
-risk profiles (possibly a separate image in the LH column for each risk type triggered).
+if the customer has a high win rate AND a third time if the bet in question was > 10x
+the the customers average bet amount. Ideally the status property of the Bet object 
+should be a bit mask, and Customer::getUnsettledBetsWithRisk() should set these values
+independently, with the datatable having logic to show multiple different risk profiles
+(possibly a separate image in the LH column for each risk type triggered).
 
 Current logic will always flag a bet falling in multiple categories first as high win 
 risk, next as unusuaul or highly unusual (depending on stake vs average bet), and finally
