@@ -1,0 +1,22 @@
+.winningtoooften {
+	color:coral;
+}
+. unusual {
+	color:red;	
+}
+.highlyunusual {
+	color:red;
+	font-weight:bold;
+}
+
+.highpayoutchance {
+	color:darkred;
+}
+thead {
+	text-align:left;
+	padding:none;
+}
+tfoot {
+	text-align:left;
+	padding:none;
+}
