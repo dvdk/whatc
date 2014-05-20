@@ -4,12 +4,12 @@ class Bet implements JsonSerializable {
 	const SETTLED = 0;
 	const UNSETTLED = 1;
 	
-	// Here are some risk profiles
+	// Risk profiles. Most serious risk has highest value
 	const NONE = 0;
 	const RISKY = 1;
-	const UNUSUAL = 2;
-	const HIGHLY_UNUSUAL = 3;
-	const UNUSUAL_WIN = 4;
+	const UNUSUAL_WIN = 2;	
+	const UNUSUAL = 3;
+	const HIGHLY_UNUSUAL = 4;
 	
 	// Customer
 	private $customer;

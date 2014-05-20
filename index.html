@@ -1,39 +1,11 @@
 <html>
 <head>
-<title>Bet risk</title>
+<title>Risk application</title>
 <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.0/css/jquery.dataTables.css" />
+<link rel="stylesheet" type="text/css" href="styles.css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="http://cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
-
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#settled').dataTable( {
-        "ajax": "data.php?betstatus=0",
-        "columns": [
-            { "data": "Risk" },
-            { "data": "Customer" },
-            { "data": "Event" },
-            { "data": "Participant" },
-            { "data": "Stake" },
-            { "data": "Win" }
-        ]
-    } );
-} );
-
-$(document).ready(function() {
-    $('#unsettled').dataTable( {
-        "ajax": "data.php?betstatus=1",
-        "columns": [
-            { "data": "Risk" },
-            { "data": "Customer" },
-            { "data": "Event" },
-            { "data": "Participant" },
-            { "data": "Stake" },
-            { "data": "Win" }
-        ]
-    } );
-} );
-</script>
+<script type="text/javascript" src="scripts.js"></script>
 </head>
 <body>
 
