@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>Bet risk</title>
+<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.0/css/jquery.dataTables.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#settled').dataTable( {
+        "ajax": "data.php?betstatus=0",
+        "columns": [
+            { "data": "Risk" },
+            { "data": "Customer" },
+            { "data": "Event" },
+            { "data": "Participant" },
+            { "data": "Stake" },
+            { "data": "Win" }
+        ]
+    } );
+} );
+
+$(document).ready(function() {
+    $('#unsettled').dataTable( {
+        "ajax": "data.php?betstatus=1",
+        "columns": [
+            { "data": "Risk" },
+            { "data": "Customer" },
+            { "data": "Event" },
+            { "data": "Participant" },
+            { "data": "Stake" },
+            { "data": "Win" }
+        ]
+    } );
+} );
+</script>
+</head>
+<body>
+
+
+<h1>Settled Bets</h1>
+<table id="settled" class="display" cellspacing="0" width="100%">
+<thead>
+    <tr>
+        <th>Risk</th>
+        <th>Customer</th>
+        <th>Event</th>
+        <th>Participant</th>
+        <th>Stake</th>
+        <th>Won</th>
+    </tr>
+</thead>
+ 
+<tfoot>
+    <tr>
+        <th>Risk</th>
+        <th>Customer</th>
+        <th>Event</th>
+        <th>Participant</th>
+        <th>Stake</th>
+        <th>Won</th>
+    </tr>
+</tfoot>
+</table>
+    
+<h1>Unsettled Bets</h1>
+<table id="unsettled" class="display" cellspacing="0" width="100%">
+<thead>
+    <tr>
+        <th>Risk</th>
+        <th>Customer</th>
+        <th>Event</th>
+        <th>Participant</th>
+        <th>Stake</th>
+        <th>Potential Win</th>
+    </tr>
+</thead>
+ 
+<tfoot>
+    <tr>
+        <th>Risk</th>
+        <th>Customer</th>
+        <th>Event</th>
+        <th>Participant</th>
+        <th>Stake</th>
+        <th>Potential Win</th>
+    </tr>
+</tfoot>
+</table>
+    
+</body>
+
+</html>
